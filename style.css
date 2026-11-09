@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0a;
+    overflow: hidden;
+    font-family: "Dancing Script", cursive;
+}
+
+canvas {
+    display: block;
+}
+
+/* ---------- TÍTULO ---------- */
+#titulo {
+    position: fixed;
+    top: 6vh;
+    left: 0;
+    right: 0;
+    padding: 0 16px;
+    text-align: center;
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    color: #ffe3ef;
+    text-shadow:
+        0 0 10px #ff4d9d,
+        0 0 30px #ff4d9d,
+        0 0 60px #b3125e;
+
+    /* Empieza invisible y un poco más abajo */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 2s ease, transform 2s ease;
+    pointer-events: none;
+}
+
+/* JavaScript le agrega esta clase cuando el ramo ya se abrió */
+#titulo.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#titulo .latido {
+    display: inline-block;
+    animation: latido 1.2s ease-in-out infinite;
+}
+
+@keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.2); }
+}
+
+/* ---------- PORTADA CON EL BOTÓN ---------- */
+#portada {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity 1s ease;
+}
+
+#portada.oculta {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#portada p {
+    color: #e2d6ff;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+}
+
+#boton {
+    font-family: inherit;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff4d9d, #c2185b);
+    border: none;
+    border-radius: 999px;
+    padding: 14px 44px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    animation: pulso 2s ease-in-out infinite;
+}
+
+#boton:hover {
+    transform: scale(1.06);
+}
+
+@keyframes pulso {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 157, 0.5); }
+    50%      { box-shadow: 0 0 45px rgba(255, 77, 157, 0.95); }
+}
